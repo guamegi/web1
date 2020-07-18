@@ -1,0 +1,56 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Realtime Bitcoin</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/websocket.js"></script>
+
+    <!-- highchart library -->
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <!-- <script src="https://code.highcharts.com/stock/modules/data.js"></script> -->
+    <!-- <script src="https://code.highcharts.com/stock/indicators/indicators-all.js"></script> -->
+    <!-- <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script> -->
+    <!-- <script src="https://code.highcharts.com/modules/annotations-advanced.js"></script> -->
+    <!-- <script src="https://code.highcharts.com/modules/price-indicator.js"></script> -->
+    <!-- <script src="https://code.highcharts.com/modules/full-screen.js"></script> -->
+    <!-- <script src="https://code.highcharts.com/modules/stock-tools.js"></script> -->
+    <script type="text/javascript" src="js/chart.js"></script>
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <h1 class="tcenter">WebSocket Test</h1>
+    <h2 class="tcenter">Realtime Bitcoin Price</h2><br>
+    <div class="tcenter">연결 상태 : <span id="output"></span></div>
+    <div class="tcenter">
+      <button class="socket_btn" onclick="ws.onopen()">connect</button>
+      <button class="socket_btn" onclick="ws.onclose()">disconnect</button>
+    </div>
+    <div>
+      <p class="tright" id="today"></p>
+      <!-- wrapper -->
+      <div id="wrapper">
+        <!-- chart -->
+        <div id="chart_area">
+          <div id="container" class="chart"></div>
+        </div>
+        <!-- sise -->
+        <div id="sise_area">
+          <ul>
+            <li>현재가 : <span id="price"></span></li>
+            <li>전일대비 : <span id="rate"></span> <span id="change_price"></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 페이지 로딩시 자동 생성 함수
+      $(function() {
+        initWebSocket();
+      });
+    </script>
+  </body>
+</html>
