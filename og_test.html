@@ -39,10 +39,21 @@
     <!-- <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/stocktools/gui.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="https://code.highcharts.com/css/annotations/popup.css"> -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+      .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Old versions of Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+      }
+    </style>
   </head>
   <body>
-    <h1 class="tcenter" style="touch-action: none">WebSocket Test</h1>
-    <canvas width="548" height="242" style="background: white"></canvas>
+    <h1 class="tcenter noselect">WebSocket Test</h1>
+    <canvas class="noselect" width="548" height="242" style="background: white"></canvas>
     <h2 class="tcenter">Realtime Bitcoin Price</h2><br>
     <div class="tcenter">연결 상태 : <span id="output"></span></div>
     <div class="tcenter">
