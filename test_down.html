@@ -12,53 +12,32 @@
   <body>
     <h2 class="tcenter">test download</h2><br>
     <div class="tcenter">
-      <!-- <a href="" download="test.png" onclick="tt()">click download</a> -->
+      <!-- <button onclick="downloadUrl('https://i.imgur.com/AD3MbBi.jpg', 'cat.jpg')">click download</button> -->
       <a onclick="downloadUrl('https://i.imgur.com/AD3MbBi.jpg', 'cat.jpg')">Download</a>
     </div>
     <script>
-        // var saveData = (function () {
-        //     var a = document.createElement("a");
-        //     document.body.appendChild(a);
-        //     a.style = "display: none";
-        //     return function (data, fileName) {
-        //         var json = JSON.stringify(data),
-        //             blob = new Blob([json], {type: "octet/stream"}),
-        //             url = window.URL.createObjectURL(blob);
-        //         a.href = url;
-        //         a.download = fileName;
-        //         a.click();
-        //         window.URL.revokeObjectURL(url);
-        //     };
-        // }());
-
-        // function tt() {
-        //     var data = { x: 42, s: "hello, world", d: new Date() },
-        //     fileName = "my-download.json";
-
-        //     saveData(data, fileName);
-        // }
-        
         function downloadUrl(url, filename) {
-        let xhr = new XMLHttpRequest();
-        xhr.open("GET", url, true);
-        xhr.responseType = "blob";
-        xhr.onload = function(e) {
-            if (this.status == 200) {
-            const blob = this.response;
-            const a = document.createElement("a");
-            document.body.appendChild(a);
-            const blobUrl = window.URL.createObjectURL(blob);
-              window.open(blobUrl, "_blank");
-            a.href = blobUrl;
-            a.download = filename;
-            a.click();
-            setTimeout(() => {
-                window.URL.revokeObjectURL(blobUrl);
-                document.body.removeChild(a);
-            }, 1000);
-            }
-        };
-        xhr.send();
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.responseType = "blob";
+            xhr.onload = function(e) {
+                if (this.status == 200) {
+                const blob = this.response;
+                const a = document.createElement("a");
+                document.body.appendChild(a);
+                const blobUrl = window.URL.createObjectURL(blob);
+                // 모바일이면 window.open()
+                // if (isMobile) window.open(blobUrl, "_blank");
+                a.href = blobUrl;
+                a.download = filename;
+                a.click();
+                setTimeout(() => {
+                    window.URL.revokeObjectURL(blobUrl);
+                    document.body.removeChild(a);
+                }, 1000);
+                }
+            };
+            xhr.send();
         }
       
     </script>
