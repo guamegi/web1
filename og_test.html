@@ -110,9 +110,9 @@
           downloadLink.download = 'chart_capture.png';
           downloadLink.href = URL.createObjectURL(new Blob(), {
             encoding: "UTF-8",
-            type: "text/png;charset=UTF-8",
+            type: "image/png;charset=UTF-8",
           });
-            let url = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+//             let url = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 //             downloadLink.setAttribute('href', canvas.toDataURL("image/png"));
 //             downloadLink.click();
         });
