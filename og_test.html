@@ -53,7 +53,10 @@
   </head>
   <body>
     <h1 class="tcenter noselect">WebSocket Test</h1>
-    <canvas class="noselect" width="548" height="242" style="background: white"></canvas>
+    <div class="cht_capbox"  id="capture_area">
+      <a id="chart_capture_link" href="" download="capture_chart.png" style="display:none" onclick="capture_chart();">capture_chart</a>
+      <canvas class="noselect" width="548" height="242" style="background: white" id="chart_div"></canvas>
+    </div>
     <h2 class="tcenter">Realtime Bitcoin Price</h2><br>
     <div class="tcenter">연결 상태 : <span id="output"></span></div>
     <div class="tcenter">
@@ -82,6 +85,43 @@
       $(function() {
         initWebSocket();
       });
+      
+      function capture_chart() {
+        $("#chart_div").capture();
+
+        let ele = $(".cht_capbox").get(0);
+        let offset_x = ele.offsetLeft;
+        let offset_y = ele.offsetTop;
+        let tgt = ele;
+        while (tgt.offsetParent) {
+            tgt = tgt.offsetParent;
+            offset_x += tgt.offsetLeft;
+            offset_y += tgt.offsetTop;
+        }
+        let option = {
+                        windowWidth: document.body.scrollWidth, windowHeight: document.body.scrollHeight,
+                        width: ele.scrollWidth, height: ele.scrollHeight,
+                        x: offset_x, y: offset_y
+                     };
+        html2canvas(document.body, option).then(function (canvas) {
+            var downloadLink = document.getElementById('chart_capture_link');
+            downloadLink.setAttribute('download', 'chart_capture.png');
+            let url = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+//             downloadLink.setAttribute('href', canvas.toDataURL("image/png"));
+            downloadLink.click();
+        });
+      }
+      
+      function capture() {
+        let downloadLink = document.createElement('a');
+        downloadLink.setAttribute('download', 'chart_capture.png');
+        let canvas = this.drawer.cvs;
+        canvas.toBlob(function(blob) {
+          let url = URL.createObjectURL(blob);
+          downloadLink.setAttribute('href', url);
+          downloadLink.click();
+        });
+      }
     </script>
   </body>
 </html>
