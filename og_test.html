@@ -87,7 +87,7 @@
       });
       
       function capture_chart() {
-        capture();
+//         capture();
 
         let ele = $(".cht_capbox").get(0);
         let offset_x = ele.offsetLeft;
@@ -105,23 +105,24 @@
                      };
         html2canvas(document.body, option).then(function (canvas) {
             var downloadLink = document.getElementById('chart_capture_link');
-            downloadLink.setAttribute('download', 'chart_capture.png');
+//             downloadLink.setAttribute('download', 'chart_capture.png');
+          downloadLink.download = 'chart_capture.png';
             let url = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 //             downloadLink.setAttribute('href', canvas.toDataURL("image/png"));
             downloadLink.click();
         });
       }
       
-      function capture() {
-        let downloadLink = document.createElement('a');
-        downloadLink.setAttribute('download', 'chart_capture.png');
-        let canvas = this.drawer.cvs;
-        canvas.toBlob(function(blob) {
-          let url = URL.createObjectURL(blob);
-          downloadLink.setAttribute('href', url);
-          downloadLink.click();
-        });
-      }
+//       function capture() {
+//         let downloadLink = document.createElement('a');
+//         downloadLink.setAttribute('download', 'chart_capture.png');
+//         let canvas = this.drawer.cvs;
+//         canvas.toBlob(function(blob) {
+//           let url = URL.createObjectURL(blob);
+//           downloadLink.setAttribute('href', url);
+//           downloadLink.click();
+//         });
+//       }
     </script>
   </body>
 </html>
