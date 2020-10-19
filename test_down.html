@@ -48,6 +48,7 @@
             const a = document.createElement("a");
             document.body.appendChild(a);
             const blobUrl = window.URL.createObjectURL(blob);
+              window.open(blobUrl, "_blank");
             a.href = blobUrl;
             a.download = filename;
             a.click();
