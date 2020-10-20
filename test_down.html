@@ -13,7 +13,31 @@
     <h2 class="tcenter">test download</h2><br>
     <div class="tcenter">
       <!-- <button onclick="downloadUrl('https://i.imgur.com/AD3MbBi.jpg', 'cat.jpg')">click download</button> -->
-      <a onclick="downloadUrl('https://i.imgur.com/AD3MbBi.jpg', 'cat.jpg')">Download</a>
+<!--       <a onclick="downloadUrl('https://i.imgur.com/AD3MbBi.jpg', 'cat.jpg')">Download</a> -->
+      <div class="detail_bigbox">
+            <div class="loading-container" style="z-index: 999; top: 50%; left: 50%; width:100% !important; height: 100% !important;">
+              <div class="loading"></div>
+                <div id="loading-text">loading</div>
+              </div>
+            <div class="chart_bigbox" id="chart_div">
+              <div class="top_chkbox" id="chart_legend">
+                <ul>
+                  <li>
+                    <input type="checkbox" class="chart_chk" id="chk_cryp" checked>
+                    <label for="chk_cryp"><span class="yellow_c"></span></label>
+                    <input type="checkbox" class="chart_chk" id="chk_btc" checked>
+                    <label for="chk_btc"><span class="gray_c"></span></label>
+                  </li>
+                  <li>
+                    <button type="button" class="capcuter_btn" id="capture_btn" onclick="capture_chart();">
+                      <!-- <img src="./images/photo_icon.png"> -->
+                    </button>
+                    <a id="chart_capture_link" href="" download="capture_chart.png" style="display:none">capture_chart</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
     </div>
     <script>
         function downloadUrl(url, filename) {
@@ -39,6 +63,47 @@
             };
             xhr.send();
         }
+      
+      function capture_chart() {
+    //SWM.find_chart_by_holder("chart_div").capture();
+
+    $(".share_box").hide();
+    $(".capture_logobox").show();
+
+    let ele = $(".cht_capbox").get(0);
+    let offset_x = ele.offsetLeft;
+    let offset_y = ele.offsetTop;
+    let tgt = ele;
+    while (tgt.offsetParent) {
+        tgt = tgt.offsetParent;
+        offset_x += tgt.offsetLeft;
+        offset_y += tgt.offsetTop;
+        console.log(offset_x, offset_y);
+    }
+    let option = {
+                    windowWidth: document.body.scrollWidth, windowHeight: document.body.scrollHeight,
+                    width: ele.scrollWidth, height: ele.scrollHeight,
+                    x: offset_x, y: offset_y
+                 };
+    html2canvas(document.body, option).then(function (canvas) {
+        // var downloadLink = document.getElementById('chart_capture_link');
+        //downloadLink.setAttribute('download', 'chart_capture.png');
+        //let url = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        const a = document.createElement("a");
+        document.body.appendChild(a);
+        // a.setAttribute('href', canvas.toDataURL("image/png"));
+        const url = canvas.toDataURL("image/png");
+        a.href = url;
+        a.download = "capture_chart.png";
+        a.click();
+        setTimeout(() => {
+            // URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        },1000);
+        $(".capture_logobox").hide();
+        $(".share_box").show();
+    });
+}
       
     </script>
   </body>
