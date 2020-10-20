@@ -66,10 +66,6 @@
         }
       
       function capture_chart() {
-    //SWM.find_chart_by_holder("chart_div").capture();
-
-    $(".share_box").hide();
-    $(".capture_logobox").show();
 
     let ele = $(".cht_capbox").get(0);
     let offset_x = ele.offsetLeft;
@@ -101,8 +97,6 @@
             // URL.revokeObjectURL(url);
             document.body.removeChild(a);
         },1000);
-        $(".capture_logobox").hide();
-        $(".share_box").show();
     });
 }
       
