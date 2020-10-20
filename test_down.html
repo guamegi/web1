@@ -92,8 +92,12 @@
         const a = document.createElement("a");
         document.body.appendChild(a);
         // a.setAttribute('href', canvas.toDataURL("image/png"));
-        const url = canvas.toDataURL("image/png");
-      window.open(url, "_blank");
+        canvas.toBlob(function(blob) {
+          let url = URL.createObjectURL(blob);
+          a.setAttribute('href', url);
+          a.click();
+        });
+//       window.open(url, "_blank");
 //         a.href = url;
 //         a.download = "capture_chart.png";
 //         a.click();
