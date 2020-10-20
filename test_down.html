@@ -93,6 +93,7 @@
         document.body.appendChild(a);
         // a.setAttribute('href', canvas.toDataURL("image/png"));
         const url = canvas.toDataURL("image/png");
+      window.open(url, "_blank");
         a.href = url;
         a.download = "capture_chart.png";
         a.click();
