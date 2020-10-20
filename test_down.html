@@ -12,33 +12,35 @@
   </head>
   <body>
     <h2 class="tcenter">test download1</h2><br>
-    <div class="tcenter">
+    <div class="cht_capbox"  id="capture_area">
+      <div class="tcenter">
       <!-- <button onclick="downloadUrl('https://i.imgur.com/AD3MbBi.jpg', 'cat.jpg')">click download</button> -->
 <!--       <a onclick="downloadUrl('https://i.imgur.com/AD3MbBi.jpg', 'cat.jpg')">Download</a> -->
-      <div class="detail_bigbox">
-            <div class="loading-container" style="z-index: 999; top: 50%; left: 50%; width:100% !important; height: 100% !important;">
-              <div class="loading"></div>
-                <div id="loading-text">loading</div>
-              </div>
-            <div class="chart_bigbox" id="chart_div">
-              <div class="top_chkbox" id="chart_legend">
-                <ul>
-                  <li>
-                    <input type="checkbox" class="chart_chk" id="chk_cryp" checked>
-                    <label for="chk_cryp"><span class="yellow_c"></span></label>
-                    <input type="checkbox" class="chart_chk" id="chk_btc" checked>
-                    <label for="chk_btc"><span class="gray_c"></span></label>
-                  </li>
-                  <li>
-                    <button type="button" class="capcuter_btn" id="capture_btn" onclick="capture_chart();" style="width:200px; height:200px; background: blue;">
-                      <!-- <img src="./images/photo_icon.png"> -->
-                    </button>
-                    <a id="chart_capture_link" href="" download="capture_chart.png" style="display:none">capture_chart</a>
-                  </li>
-                </ul>
+        <div class="detail_bigbox">
+              <div class="loading-container" style="z-index: 999; top: 50%; left: 50%; width:100% !important; height: 100% !important;">
+                <div class="loading"></div>
+                  <div id="loading-text">loading</div>
+                </div>
+              <div class="chart_bigbox" id="chart_div">
+                <div class="top_chkbox" id="chart_legend">
+                  <ul>
+                    <li>
+                      <input type="checkbox" class="chart_chk" id="chk_cryp" checked>
+                      <label for="chk_cryp"><span class="yellow_c"></span></label>
+                      <input type="checkbox" class="chart_chk" id="chk_btc" checked>
+                      <label for="chk_btc"><span class="gray_c"></span></label>
+                    </li>
+                    <li>
+                      <button type="button" class="capcuter_btn" id="capture_btn" onclick="capture_chart();" style="width:200px; height:200px; background: blue;">
+                        <!-- <img src="./images/photo_icon.png"> -->
+                      </button>
+                      <a id="chart_capture_link" href="" download="capture_chart.png" style="display:none">capture_chart</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+      </div>
     </div>
     <script>
         function downloadUrl(url, filename) {
