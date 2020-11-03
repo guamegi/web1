@@ -23,7 +23,7 @@
 //                     saveAs(blob, 'image.png');
 //                 });
               var a = document.getElementById('downloadImage');
-              a.setAttribute('href', canvas.toDataURL("image/png"));
+              a.href = canvas.toDataURL();
               a.download = 'test.png';
               a.click();
             }
