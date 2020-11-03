@@ -25,6 +25,7 @@
               var a = document.getElementById('downloadImage');
               a.href = canvas.toDataURL();
               a.download = 'test.png';
+              document.body.appendChild(a);
               a.click();
             }
         });
