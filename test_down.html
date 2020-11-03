@@ -19,9 +19,13 @@
         $("#save").click(function() { 
         html2canvas($("#downloadImage"), {
             onrendered: function(canvas) {
-                canvas.toBlob(function(blob) {
-                    saveAs(blob, 'image.png');
-                });
+//                 canvas.toBlob(function(blob) {
+//                     saveAs(blob, 'image.png');
+//                 });
+              var a = document.getElementById('downloadImage');
+              a.href = canvas.toBlob();
+              a.download = 'test.png';
+              a.click();
             }
         });
     });
