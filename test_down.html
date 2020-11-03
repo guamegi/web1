@@ -23,7 +23,9 @@
 //                     saveAs(blob, 'image.png');
 //                 });
               var a = document.getElementById('downloadImage');
-              a.href = canvas.toBlob();
+              a.href = canvas.toBlob(function(blob) {
+                    saveAs(blob, 'image.png');
+                });
               a.download = 'test.png';
               a.click();
             }
